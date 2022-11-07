@@ -1,0 +1,10 @@
+server:
+  ip: 0.0.0.0
+  port: 8001
+
+database:
+  url: mysql://snack:sdfcerts4AMC@rm-uf6q5iv7z51907iiodo.rwlb.rds.aliyuncs.com/tiny-url
+  pool_size: 5
+
+tiny_url:
+  pres: 127.0.0.1:8001,localhost:8001

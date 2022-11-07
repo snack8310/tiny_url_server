@@ -29,7 +29,7 @@ pub struct Settings {
 
 impl Settings {
     pub fn new() -> Result<Self, ConfigError> {
-        const CURRENT_DIR:&str = "./config/Settings.toml";
+        const CURRENT_DIR:&str = "./config/Settings.yaml";
 
         let s = Config::builder().add_source(config::File::with_name(CURRENT_DIR)).build()?;
 
