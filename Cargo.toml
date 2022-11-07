@@ -1,0 +1,20 @@
+[package]
+name = "tiny_url_server"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+actix-web = "4"
+actix-cors = "0.6.4"
+sqlx = { version = "0.6", features = [ "runtime-actix-native-tls" , "mysql", "runtime-tokio-native-tls" ] }
+config = "0.13.1"
+serde = "1.0.145"
+serde_json = { version = "1.0.2", optional = true }
+nanoid = "0.4.0"
+log = "0.4"
+simple_logger = "4.0.0"
+
+[profile.dev.package.sqlx-macros]
+opt-level = 3
