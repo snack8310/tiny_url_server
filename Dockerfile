@@ -32,15 +32,14 @@ RUN cargo build --release
 FROM registry.cn-shanghai.aliyuncs.com/snack_on_monday/ubuntu_ssl:20.04
 # FROM dockerhub.test.wacai.info/xamc_ext/cc-debian11 
 
-COPY --from=builder /app/target/release/leonis /app/leonis
-COPY configs /app/configs
-COPY templates /app/templates
+COPY --from=builder /app/target/release/tiny_url_server /app/tiny_url_server
+COPY config /app/config
 
 ENV ROCKET_ADDRESS=0.0.0.0
 EXPOSE 8000
 
 WORKDIR /app
 
-CMD ["./leonis"]
+CMD ["./tiny_url_server"]
 
-# docker run -p 8000:8000 leonis    
+# docker run -p 8000:8000 tiny_url_server    
