@@ -26,16 +26,12 @@ COPY --from=cacher /usr/local/cargo /user/local/cargo
 
 RUN cargo build --release
 
-# FROM dockerhub.test.wacai.info/xamc_ext/ubuntu:20.04
-# RUN apt update
 # RUN apt install libmariadb3 libmariadb-dev -y
 FROM registry.cn-shanghai.aliyuncs.com/snack_on_monday/ubuntu_ssl:20.04
-# FROM dockerhub.test.wacai.info/xamc_ext/cc-debian11 
 
 COPY --from=builder /app/target/release/tiny_url_server /app/tiny_url_server
 COPY config /app/config
 
-ENV ROCKET_ADDRESS=0.0.0.0
 EXPOSE 8000
 
 WORKDIR /app
