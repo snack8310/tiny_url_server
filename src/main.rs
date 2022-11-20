@@ -1,6 +1,6 @@
 use actix_cors::Cors;
 use actix_web::{
-    get, http,
+    get,
     web::{self},
     App, HttpResponse, HttpServer, Responder,
 };
@@ -50,11 +50,12 @@ async fn main() -> Result<(), sqlx::Error> {
     };
 
     HttpServer::new(move || {
-        let cors = Cors::default()
-            .allowed_origin("http://127.0.0.1:8080")
-            .allowed_methods(vec!["GET", "POST"])
-            .allowed_header(http::header::CONTENT_TYPE)
-            .max_age(3600);
+        // let cors = Cors::default()
+        //     .allowed_origin("http://0.0.0.0:8080")
+        //     .allowed_methods(vec!["GET", "POST"])
+        //     .allowed_header(http::header::CONTENT_TYPE)
+        //     .max_age(3600);
+        let cors = Cors::permissive();
 
         App::new()
             .wrap(cors)
@@ -64,6 +65,7 @@ async fn main() -> Result<(), sqlx::Error> {
             .service(api::api::create_link)
             .service(api::api::get_all_links)
             .service(api::api::get_from_link)
+            .service(api::api::get_origin_url_from_link)
     })
     .bind(&ip)?
     .run()

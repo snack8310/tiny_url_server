@@ -3,7 +3,7 @@ server:
   port: 8001
 
 database:
-  url: mysql://snack:sdfcerts4AMC@rm-uf6q5iv7z51907iiodo.rwlb.rds.aliyuncs.com/tiny-url
+  url: mysql://admin:password@url/schema
   pool_size: 5
 
 tiny_url:
